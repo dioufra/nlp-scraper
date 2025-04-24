@@ -62,6 +62,9 @@ This SpaCy model provides 300-dimensional word vectors trained on a large corpus
 #### 🔹 Why Cosine Similarity?
 Cosine similarity is effective for comparing direction of vectors in high-dimensional space regardless of magnitude. It's widely used in NLP tasks for semantic comparison due to its simplicity and interpretability.
 
+#### 🔹 Scandal score?
+The score were calculated by returning the maximum similarity score for all the sentences where an organization has been detected.
+
 ## 📦 Requirements
 * requests
 * beautifulsoup4
