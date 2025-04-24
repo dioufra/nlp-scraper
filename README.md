@@ -75,9 +75,9 @@ Cosine similarity is effective for comparing direction of vectors in high-dimens
 
 ## Installation
 1. Clone the repository
-2. Set up the environment:
+2. Create and set up the environment:
 ```bash
-pip install -r requirements.txt
+conda create --name <env> --file requirements.txt
 python -m spacy download en_core_web_lg
 python -m nltk.downloader punkt wordnet stopwords vader_lexicon
 ```
