@@ -22,7 +22,7 @@ from sqlalchemy import create_engine, String, Column, Date, Text
 # Constants
 DAYS_LIMIT = 90
 MAX_WORKERS = min(20, (os.cpu_count() or 1) * 5)
-MIN_ARTICLES = 300
+MIN_ARTICLES = 10
 QUANTITY = 50
 
 BASE_DOMAIN = "https://www.aljazeera.com"
@@ -55,7 +55,7 @@ Base.metadata.create_all(engine)
 
 
 def get_links(
-    target_count: int = 400, min_delay: float = 1, max_delay: float = 3
+    target_count: int = 500, min_delay: float = 1, max_delay: float = 3
 ) -> List[str]:
     """Scrape Al Jazeera article URLs via GraphQL endpoint."""
 
@@ -174,6 +174,7 @@ def insert_articles(articles: List[Dict]):
     try:
         session.bulk_insert_mappings(Article, articles)
         session.commit()
+        print("saved in ./data/articles.db")
     finally:
         session.close()
 
