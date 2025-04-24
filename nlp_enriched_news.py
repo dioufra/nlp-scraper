@@ -150,7 +150,7 @@ def detect_scandal(text, entities):
 
     # Process sentences
     sentences = sent_tokenize(text)
-
+    max_scores = []
     # Scan each sentence
     for sent in sentences:
         # Check if sentence contains any of our entities
@@ -169,13 +169,14 @@ def detect_scandal(text, entities):
                 ]
 
                 max_similarity = max(similarities) if similarities else 0.0
+                max_scores.append(max_similarity)
 
                 # If scandal detected, print alert
                 if max_similarity > 0.75:
                     print(f"Environmental scandal detected for {entity}")
                     # print(f"Relevant sentence: '{sent}'\n")
 
-    return max_similarity
+    return max(max_scores)
 
 
 # ┌────────────────────────────────────┐
